@@ -48,38 +48,27 @@ namespace WinFormsApp1
 
         private void LoadData()
         {
-            dataGridView4.DataSource = new BindingList<Semester>(_repositorySemester.GetAll().ToList());
-        
-            var lessons = (from Lesson in _repositoryLesson.GetAll()
-                           join Teacher in _repositoryTeacher.GetAll() on Lesson.TeacherID equals Teacher.TeacherID
-                           join Group in _repositoryGroup.GetAll() on Lesson.GroupID equals Group.GroupID
-                           join Office in _repositoryOffice.GetAll() on Lesson.OfficeID equals Office.OfficeID
-                          // join Subject in _repositorySubject.GetAll() on Lesson.SubjectID equals Subject.SubjectID
-                           //join Day in _repositoryDay.GetAll() on Lesson.DayID equals Day.DayID
-                           select new LessonInfo
-                           {
-                               LessonID = Lesson.LessonID,
-                               TeacherName = Teacher.FirstName + " " + Teacher.LastName,
-                               GroupName = Group.GroupName,
-                               OfficeName = Office.OfficeID, 
-                               LessonOrder = Lesson.LesssonOrderID,
-                              // SubjectName = Lesson.Subject.SubjectName,
-                              // DayName = Lesson.Day.DayName
-                               
-                           }).ToList();
-
-            dataGridView1.DataSource = new BindingList<LessonInfo>(lessons);
+            dataGridView1.DataSource = new BindingList<LessonInfo>(
+                (from Lesson in _repositoryLesson.GetAll()
+                 join Office in _repositoryOffice.GetAll() on Lesson.OfficeID equals Office.OfficeID
+                 join Group in _repositoryGroup.GetAll() on Lesson.GroupID equals Group.GroupID
+                 join Subject in _repositorySubject.GetAll() on Lesson.SubjectID equals Subject.SubjectID
+                 join Teacher in _repositoryTeacher.GetAll() on Lesson.TeacherID equals Teacher.TeacherID
+                 select new LessonInfo
+                 {
+                     OfficeName = Office.OfficeID,
+                     GroupName = Group.GroupName,
+                     SubjectName = Subject.SubjectName,
+                     TeacherName = Teacher.LastName
+                 }).ToList());
         }
 
         public class LessonInfo
         {
-            public int LessonID { get; set; }
-            public string TeacherName { get; set; }
-            public string GroupName { get; set; }
             public int OfficeName { get; set; }
-            public int LessonOrder { get; set; }
+            public string GroupName { get; set; }
             public string SubjectName { get; set; }
-            public string DayName { get; set; }
+            public string TeacherName { get; set; }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -160,11 +149,6 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Ошибка удаления: " + ex.Message);
             }
-        }
-
-        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

@@ -345,7 +345,6 @@
             dataGridView5.RowHeadersWidth = 62;
             dataGridView5.Size = new Size(1103, 655);
             dataGridView5.TabIndex = 1;
-            dataGridView5.CellContentClick += dataGridView5_CellContentClick;
             // 
             // subjectNameDataGridViewTextBoxColumn
             // 
