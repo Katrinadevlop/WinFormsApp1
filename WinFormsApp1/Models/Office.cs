@@ -7,13 +7,11 @@ namespace WinFormsApp1.Models;
 
 public partial class Office
 {
-    public int OfficeId { get; set; }
+    public int OfficeID { get; set; }
 
-    public int OfficeTypeId { get; set; }
-
-    public int? NumberSeats { get; set; }
+    public int NumberSeats { get; set; }
 
     public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
 
-    public virtual ICollection<TypeAssign> TypeAssigns { get; set; } = new List<TypeAssign>();
+    public virtual ICollection<TypeOffice> OfficeTypes { get; set; } = new List<TypeOffice>();
 }

@@ -7,21 +7,21 @@ namespace WinFormsApp1.Models;
 
 public partial class Subject
 {
-    public int SubjectId { get; set; }
+    public int SubjectID { get; set; }
 
     public string SubjectName { get; set; }
 
-    public int? HoursPerLecture { get; set; }
+    public int HoursPerLecture { get; set; }
 
-    public int? HoursPerPractic { get; set; }
+    public int HoursPerPractic { get; set; }
 
-    public int? HoursPerLaborat { get; set; }
+    public int HoursPerLaborat { get; set; }
 
-    public int? HoursPerConsult { get; set; }
+    public int HoursPerConsult { get; set; }
 
-    public int? HoursPerExam { get; set; }
+    public int HoursPerExam { get; set; }
+
+    public string Subjectscol { get; set; }
 
     public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
-
-    public virtual ICollection<Teacher> Teachers { get; set; } = new List<Teacher>();
 }

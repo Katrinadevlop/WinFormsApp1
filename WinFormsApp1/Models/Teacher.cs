@@ -7,7 +7,7 @@ namespace WinFormsApp1.Models;
 
 public partial class Teacher
 {
-    public int TeacherId { get; set; }
+    public int TeacherID { get; set; }
 
     public string FirstName { get; set; }
 
@@ -17,5 +17,5 @@ public partial class Teacher
 
     public bool IsAvailable { get; set; }
 
-    public virtual ICollection<Subject> Subjects { get; set; } = new List<Subject>();
+    public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
 }

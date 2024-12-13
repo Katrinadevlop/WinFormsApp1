@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace WinFormsApp1.Models;
 
-public partial class Group
+public partial class LesssonOrder
 {
-    public int GroupID { get; set; }
+    public int LesssonOrderID { get; set; }
 
-    public string GroupName { get; set; }
+    public int LesssonOrder1 { get; set; }
 
     public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
 }

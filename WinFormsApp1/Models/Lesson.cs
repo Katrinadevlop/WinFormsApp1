@@ -7,23 +7,33 @@ namespace WinFormsApp1.Models;
 
 public partial class Lesson
 {
-    public int LessonId { get; set; }
+    public int LessonID { get; set; }
 
-    public int GroupId { get; set; }
+    public int GroupID { get; set; }
 
-    public int OfficeId { get; set; }
+    public int OfficeID { get; set; }
 
-    public int SubjectId { get; set; }
+    public int SubjectID { get; set; }
 
-    public int DayId { get; set; }
+    public int DayID { get; set; }
 
-    public string LessonsType { get; set; }
+    public int TeacherID { get; set; }
+
+    public int LesssonOrderID { get; set; }
+
+    public int LessonTypesID { get; set; }
 
     public virtual Day Day { get; set; }
 
     public virtual Group Group { get; set; }
 
+    public virtual LessonType LessonTypes { get; set; }
+
+    public virtual LesssonOrder LesssonOrder { get; set; }
+
     public virtual Office Office { get; set; }
 
     public virtual Subject Subject { get; set; }
+
+    public virtual Teacher Teacher { get; set; }
 }

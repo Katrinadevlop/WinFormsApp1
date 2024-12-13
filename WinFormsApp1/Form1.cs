@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using WinFormsApp1.DbRepository;
 using WinFormsApp1.Models;
 
 namespace WinFormsApp1
@@ -10,6 +11,17 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
         private DbRepository<Semester> _repositorySemester;
+        private DbRepository<Week> _repositoryWeek;
+        private DbRepository<Models.Day> _repositoryDay;
+        private DbRepository<TypeOffice> _repositoryTypeOffice;
+        private DbRepository<Office> _repositoryOffice;
+        private DbRepository<LessonType> _repositoryLessonType;
+        private DbRepository<Group> _repositoryGroup;
+        private DbRepository<LesssonOrder> _repositoryLesssonOrder;
+        private DbRepository<Teacher> _repositoryTeacher;
+        private DbRepository<Subject> _repositorySubject;
+
+        private DbRepository<Lesson> _repositoryLesson;
 
         public Form1()
         {
@@ -18,6 +30,17 @@ namespace WinFormsApp1
             connection.UseMySql("Server=sql8.freesqldatabase.com;Database=sql8751184;User=sql8751184;Password=KFLf9dkgar;",
                 new MySqlServerVersion(new Version(8, 0, 32)));
             _repositorySemester = new DbRepository<Semester>(connection.Options);
+            _repositoryWeek = new DbRepository<Week>(connection.Options);
+            _repositoryDay = new DbRepository<Models.Day>(connection.Options);
+            _repositoryTypeOffice = new DbRepository<TypeOffice>(connection.Options);
+            _repositoryOffice = new DbRepository<Office>(connection.Options);
+            _repositoryLessonType = new DbRepository<LessonType>(connection.Options);
+            _repositoryGroup = new DbRepository<Group>(connection.Options);
+            _repositoryLesssonOrder = new DbRepository<LesssonOrder>(connection.Options);
+            _repositoryTeacher = new DbRepository<Teacher>(connection.Options);
+            _repositorySubject = new DbRepository<Subject>(connection.Options);
+
+            _repositoryLesson = new DbRepository<Lesson>(connection.Options);
 
             LoadData();
             dataGridView4.AutoGenerateColumns = true;
@@ -25,8 +48,38 @@ namespace WinFormsApp1
 
         private void LoadData()
         {
-
             dataGridView4.DataSource = new BindingList<Semester>(_repositorySemester.GetAll().ToList());
+        
+            var lessons = (from Lesson in _repositoryLesson.GetAll()
+                           join Teacher in _repositoryTeacher.GetAll() on Lesson.TeacherID equals Teacher.TeacherID
+                           join Group in _repositoryGroup.GetAll() on Lesson.GroupID equals Group.GroupID
+                           join Office in _repositoryOffice.GetAll() on Lesson.OfficeID equals Office.OfficeID
+                          // join Subject in _repositorySubject.GetAll() on Lesson.SubjectID equals Subject.SubjectID
+                           //join Day in _repositoryDay.GetAll() on Lesson.DayID equals Day.DayID
+                           select new LessonInfo
+                           {
+                               LessonID = Lesson.LessonID,
+                               TeacherName = Teacher.FirstName + " " + Teacher.LastName,
+                               GroupName = Group.GroupName,
+                               OfficeName = Office.OfficeID, 
+                               LessonOrder = Lesson.LesssonOrderID,
+                              // SubjectName = Lesson.Subject.SubjectName,
+                              // DayName = Lesson.Day.DayName
+                               
+                           }).ToList();
+
+            dataGridView1.DataSource = new BindingList<LessonInfo>(lessons);
+        }
+
+        public class LessonInfo
+        {
+            public int LessonID { get; set; }
+            public string TeacherName { get; set; }
+            public string GroupName { get; set; }
+            public int OfficeName { get; set; }
+            public int LessonOrder { get; set; }
+            public string SubjectName { get; set; }
+            public string DayName { get; set; }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -40,7 +93,7 @@ namespace WinFormsApp1
 
                 var newSemester = new Semester
                 {
-                    SemesterId = semesterId,
+                    SemesterID = semesterId,
                     SemesterNumber = semesterNumber
                 };
                 _repositorySemester.Add(newSemester);
@@ -62,7 +115,7 @@ namespace WinFormsApp1
                 int semesterId = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
                 int semesterNumber = Convert.ToInt32(dataGridView4.CurrentRow.Cells[1].Value);
 
-                var existingSemester = _repositorySemester.GetAll().FirstOrDefault(s => s.SemesterId == semesterId);
+                var existingSemester = _repositorySemester.GetAll().FirstOrDefault(s => s.SemesterID == semesterId);
 
                 if (existingSemester != null)
                 {
@@ -90,7 +143,7 @@ namespace WinFormsApp1
 
                 int semesterId = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
 
-                var semesterToDelete = _repositorySemester.GetAll().FirstOrDefault(s => s.SemesterId == semesterId);
+                var semesterToDelete = _repositorySemester.GetAll().FirstOrDefault(s => s.SemesterID == semesterId);
 
                 if (semesterToDelete != null)
                 {
@@ -107,6 +160,11 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Ошибка удаления: " + ex.Message);
             }
+        }
+
+        private void dataGridView5_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

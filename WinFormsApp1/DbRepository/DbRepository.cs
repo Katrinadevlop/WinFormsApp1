@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using WinFormsApp1.Models;
 
-namespace WinFormsApp1
+namespace WinFormsApp1.DbRepository
 {
     public class DbRepository<T> where T : class
     {
         private readonly sql8751184Context _context;
-        
-        public DbRepository(DbContextOptions<sql8751184Context> options) { 
+
+        public DbRepository(DbContextOptions<sql8751184Context> options)
+        {
             _context = new sql8751184Context(options);
         }
 
@@ -21,7 +22,7 @@ namespace WinFormsApp1
             return _context.Set<T>().ToList();
         }
 
-        public void Add(T entity) 
+        public void Add(T entity)
         {
             _context.Set<T>().Add(entity);
             _context.SaveChanges();

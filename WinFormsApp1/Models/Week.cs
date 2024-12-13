@@ -7,11 +7,11 @@ namespace WinFormsApp1.Models;
 
 public partial class Week
 {
-    public int WeekId { get; set; }
+    public int WeekID { get; set; }
 
     public int WeekNumber { get; set; }
 
-    public int SemesterId { get; set; }
+    public int SemesterID { get; set; }
 
     public virtual ICollection<Day> Days { get; set; } = new List<Day>();
 
