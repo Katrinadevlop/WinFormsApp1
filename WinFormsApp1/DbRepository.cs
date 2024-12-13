@@ -10,7 +10,7 @@ namespace WinFormsApp1
 {
     public class DbRepository<T> where T : class
     {
-        private readonly DbContext _context;
+        private readonly sql8751184Context _context;
         
         public DbRepository(DbContextOptions<sql8751184Context> options) { 
             _context = new sql8751184Context(options);
@@ -22,7 +22,7 @@ namespace WinFormsApp1
         }
 
         public void Add(T entity) 
-        { 
+        {
             _context.Set<T>().Add(entity);
             _context.SaveChanges();
         }

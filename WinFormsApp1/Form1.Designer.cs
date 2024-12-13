@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            button1 = new Button();
             TypeOffices = new TabPage();
             dataGridView11 = new DataGridView();
             officeTypeIdDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -83,7 +82,6 @@
             dataGridView4 = new DataGridView();
             semesterIdDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             semesterNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            weeksDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             semesterBindingSource = new BindingSource(components);
             Weeks = new TabPage();
             dataGridView3 = new DataGridView();
@@ -111,6 +109,9 @@
             officeDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             subjectDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             tabControl1 = new TabControl();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             TypeOffices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)typeOfficeBindingSource).BeginInit();
@@ -143,15 +144,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl1.SuspendLayout();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(1165, 60);
-            button1.Name = "button1";
-            button1.Size = new Size(127, 50);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
             // 
             // TypeOffices
             // 
@@ -578,9 +570,10 @@
             // 
             // dataGridView4
             // 
+            dataGridView4.AllowUserToOrderColumns = true;
             dataGridView4.AutoGenerateColumns = false;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Columns.AddRange(new DataGridViewColumn[] { semesterIdDataGridViewTextBoxColumn1, semesterNumberDataGridViewTextBoxColumn, weeksDataGridViewTextBoxColumn });
+            dataGridView4.Columns.AddRange(new DataGridViewColumn[] { semesterIdDataGridViewTextBoxColumn1, semesterNumberDataGridViewTextBoxColumn });
             dataGridView4.DataSource = semesterBindingSource;
             dataGridView4.Location = new Point(6, 5);
             dataGridView4.Name = "dataGridView4";
@@ -603,14 +596,6 @@
             semesterNumberDataGridViewTextBoxColumn.MinimumWidth = 8;
             semesterNumberDataGridViewTextBoxColumn.Name = "semesterNumberDataGridViewTextBoxColumn";
             semesterNumberDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // weeksDataGridViewTextBoxColumn
-            // 
-            weeksDataGridViewTextBoxColumn.DataPropertyName = "Weeks";
-            weeksDataGridViewTextBoxColumn.HeaderText = "Weeks";
-            weeksDataGridViewTextBoxColumn.MinimumWidth = 8;
-            weeksDataGridViewTextBoxColumn.Name = "weeksDataGridViewTextBoxColumn";
-            weeksDataGridViewTextBoxColumn.Width = 150;
             // 
             // semesterBindingSource
             // 
@@ -744,7 +729,6 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1103, 655);
             dataGridView1.TabIndex = 0;
-            dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
             // 
             // lessonIdDataGridViewTextBoxColumn1
             // 
@@ -844,13 +828,45 @@
             tabControl1.Size = new Size(1123, 702);
             tabControl1.TabIndex = 2;
             // 
+            // button1
+            // 
+            button1.Location = new Point(1185, 75);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 3;
+            button1.Text = "Добавить";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += btnAdd_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(1185, 125);
+            button2.Name = "button2";
+            button2.Size = new Size(112, 34);
+            button2.TabIndex = 4;
+            button2.Text = "Изменить";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += btnEdit_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(1185, 181);
+            button3.Name = "button3";
+            button3.Size = new Size(112, 34);
+            button3.TabIndex = 5;
+            button3.Text = "Удалить";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += btnDelete_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1327, 728);
-            Controls.Add(tabControl1);
+            ClientSize = new Size(1335, 728);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(button1);
+            Controls.Add(tabControl1);
             Name = "Form1";
             Text = "Form1";
             TypeOffices.ResumeLayout(false);
@@ -888,7 +904,6 @@
         }
 
         #endregion
-        private Button button1;
         private TabPage TypeOffices;
         private DataGridView dataGridView11;
         private TabPage TypeAssign;
@@ -912,9 +927,6 @@
         private TabControl tabControl1;
         private DataGridViewTextBoxColumn dayIdDataGridViewTextBoxColumn;
         private BindingSource lessonBindingSource;
-        private DataGridViewTextBoxColumn semesterIdDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn semesterNumberDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn weeksDataGridViewTextBoxColumn;
         private BindingSource semesterBindingSource;
         private DataGridViewTextBoxColumn weekIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn weekNumberDataGridViewTextBoxColumn;
@@ -970,5 +982,10 @@
         private DataGridViewCheckBoxColumn isAvailableDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn subjectsDataGridViewTextBoxColumn;
         private BindingSource teacherBindingSource;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private DataGridViewTextBoxColumn semesterIdDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn semesterNumberDataGridViewTextBoxColumn;
     }
 }
