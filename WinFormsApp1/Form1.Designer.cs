@@ -33,8 +33,6 @@
             dataGridView11 = new DataGridView();
             officeTypeDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             typeOfficeBindingSource = new BindingSource(components);
-            TypeAssign = new TabPage();
-            dataGridView10 = new DataGridView();
             typeAssignBindingSource = new BindingSource(components);
             Offices = new TabPage();
             dataGridView9 = new DataGridView();
@@ -84,14 +82,18 @@
             Lessons = new TabPage();
             dataGridView1 = new DataGridView();
             tabControl1 = new TabControl();
+            LesssonOrder = new TabPage();
+            LessonTypes = new TabPage();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            dataGridView6 = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridView10 = new DataGridView();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             TypeOffices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)typeOfficeBindingSource).BeginInit();
-            TypeAssign.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)typeAssignBindingSource).BeginInit();
             Offices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView9).BeginInit();
@@ -117,6 +119,10 @@
             Lessons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl1.SuspendLayout();
+            LesssonOrder.SuspendLayout();
+            LessonTypes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView10).BeginInit();
             SuspendLayout();
             // 
             // TypeOffices
@@ -154,28 +160,6 @@
             // typeOfficeBindingSource
             // 
             typeOfficeBindingSource.DataSource = typeof(Models.TypeOffice);
-            // 
-            // TypeAssign
-            // 
-            TypeAssign.Controls.Add(dataGridView10);
-            TypeAssign.Location = new Point(4, 34);
-            TypeAssign.Name = "TypeAssign";
-            TypeAssign.Padding = new Padding(3);
-            TypeAssign.Size = new Size(1115, 664);
-            TypeAssign.TabIndex = 9;
-            TypeAssign.Text = "TypeAssign";
-            TypeAssign.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView10
-            // 
-            dataGridView10.AutoGenerateColumns = false;
-            dataGridView10.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView10.DataSource = typeAssignBindingSource;
-            dataGridView10.Location = new Point(6, 5);
-            dataGridView10.Name = "dataGridView10";
-            dataGridView10.RowHeadersWidth = 62;
-            dataGridView10.Size = new Size(1103, 655);
-            dataGridView10.TabIndex = 2;
             // 
             // Offices
             // 
@@ -590,13 +574,35 @@
             tabControl1.Controls.Add(Teachers);
             tabControl1.Controls.Add(Groups);
             tabControl1.Controls.Add(Offices);
-            tabControl1.Controls.Add(TypeAssign);
             tabControl1.Controls.Add(TypeOffices);
+            tabControl1.Controls.Add(LesssonOrder);
+            tabControl1.Controls.Add(LessonTypes);
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1123, 702);
             tabControl1.TabIndex = 2;
+            // 
+            // LesssonOrder
+            // 
+            LesssonOrder.Controls.Add(dataGridView6);
+            LesssonOrder.Location = new Point(4, 34);
+            LesssonOrder.Name = "LesssonOrder";
+            LesssonOrder.Size = new Size(1115, 664);
+            LesssonOrder.TabIndex = 11;
+            LesssonOrder.Text = "LesssonOrder";
+            LesssonOrder.UseVisualStyleBackColor = true;
+            LesssonOrder.Click += LesssonOrder_Click;
+            // 
+            // LessonTypes
+            // 
+            LessonTypes.Controls.Add(dataGridView10);
+            LessonTypes.Location = new Point(4, 34);
+            LessonTypes.Name = "LessonTypes";
+            LessonTypes.Size = new Size(1115, 664);
+            LessonTypes.TabIndex = 13;
+            LessonTypes.Text = "LessonTypes";
+            LessonTypes.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -628,6 +634,46 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += btnDelete_Click;
             // 
+            // dataGridView6
+            // 
+            dataGridView6.AutoGenerateColumns = false;
+            dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView6.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1 });
+            dataGridView6.DataSource = typeOfficeBindingSource;
+            dataGridView6.Location = new Point(6, 5);
+            dataGridView6.Name = "dataGridView6";
+            dataGridView6.RowHeadersWidth = 62;
+            dataGridView6.Size = new Size(1103, 655);
+            dataGridView6.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "OfficeType";
+            dataGridViewTextBoxColumn1.HeaderText = "OfficeType";
+            dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridView10
+            // 
+            dataGridView10.AutoGenerateColumns = false;
+            dataGridView10.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView10.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2 });
+            dataGridView10.DataSource = typeOfficeBindingSource;
+            dataGridView10.Location = new Point(6, 5);
+            dataGridView10.Name = "dataGridView10";
+            dataGridView10.RowHeadersWidth = 62;
+            dataGridView10.Size = new Size(1103, 655);
+            dataGridView10.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "OfficeType";
+            dataGridViewTextBoxColumn2.HeaderText = "OfficeType";
+            dataGridViewTextBoxColumn2.MinimumWidth = 8;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 150;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -642,8 +688,6 @@
             TypeOffices.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView11).EndInit();
             ((System.ComponentModel.ISupportInitialize)typeOfficeBindingSource).EndInit();
-            TypeAssign.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView10).EndInit();
             ((System.ComponentModel.ISupportInitialize)typeAssignBindingSource).EndInit();
             Offices.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView9).EndInit();
@@ -669,14 +713,16 @@
             Lessons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabControl1.ResumeLayout(false);
+            LesssonOrder.ResumeLayout(false);
+            LessonTypes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView10).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private TabPage TypeOffices;
         private DataGridView dataGridView11;
-        private TabPage TypeAssign;
-        private DataGridView dataGridView10;
         private TabPage Offices;
         private DataGridView dataGridView9;
         private TabPage Groups;
@@ -755,5 +801,11 @@
         private DataGridViewTextBoxColumn weekIDDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn lessonsDataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn weekDataGridViewTextBoxColumn;
+        private TabPage LesssonOrder;
+        private TabPage LessonTypes;
+        private DataGridView dataGridView6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridView dataGridView10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

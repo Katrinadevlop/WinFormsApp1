@@ -43,11 +43,32 @@ namespace WinFormsApp1
             _repositoryLesson = new DbRepository<Lesson>(connection.Options);
 
             LoadData();
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView2.AutoGenerateColumns = true;
+            dataGridView3.AutoGenerateColumns = true;
             dataGridView4.AutoGenerateColumns = true;
+            dataGridView5.AutoGenerateColumns = true;
+            dataGridView6.AutoGenerateColumns = true;
+            dataGridView7.AutoGenerateColumns = true;
+            dataGridView8.AutoGenerateColumns = true;
+            dataGridView9.AutoGenerateColumns = true;
+            dataGridView10.AutoGenerateColumns = true;
+            dataGridView11.AutoGenerateColumns = true;
         }
 
         private void LoadData()
         {
+            dataGridView4.DataSource = _repositorySemester;
+            dataGridView3.DataSource = _repositoryWeek;
+            dataGridView2.DataSource = _repositoryDay;
+            dataGridView5.DataSource = _repositorySubject;
+            dataGridView7.DataSource = _repositoryTeacher;
+            dataGridView8.DataSource = _repositoryGroup;
+            dataGridView9.DataSource = _repositoryOffice;
+            dataGridView11.DataSource = _repositoryTypeOffice;
+            dataGridView6.DataSource = _repositoryLesssonOrder;
+            dataGridView10.DataSource = _repositoryLessonType;
+
             dataGridView1.DataSource = new BindingList<LessonInfo>(
                 (from Lesson in _repositoryLesson.GetAll()
                  join Office in _repositoryOffice.GetAll() on Lesson.OfficeID equals Office.OfficeID
@@ -61,14 +82,6 @@ namespace WinFormsApp1
                      SubjectName = Subject.SubjectName,
                      TeacherName = Teacher.LastName
                  }).ToList());
-        }
-
-        public class LessonInfo
-        {
-            public int OfficeName { get; set; }
-            public string GroupName { get; set; }
-            public string SubjectName { get; set; }
-            public string TeacherName { get; set; }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
