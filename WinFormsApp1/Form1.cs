@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using WinFormsApp1.DbRepository;
 using WinFormsApp1.Models;
+using Day = WinFormsApp1.Models.Day;
 
 namespace WinFormsApp1
 {
@@ -12,7 +13,7 @@ namespace WinFormsApp1
     {
         private DbRepository<Semester> _repositorySemester;
         private DbRepository<Week> _repositoryWeek;
-        private DbRepository<Models.Day> _repositoryDay;
+        private DbRepository<Day> _repositoryDay;
         private DbRepository<TypeOffice> _repositoryTypeOffice;
         private DbRepository<Office> _repositoryOffice;
         private DbRepository<LessonType> _repositoryLessonType;
@@ -31,7 +32,7 @@ namespace WinFormsApp1
                 new MySqlServerVersion(new Version(8, 0, 32)));
             _repositorySemester = new DbRepository<Semester>(connection.Options);
             _repositoryWeek = new DbRepository<Week>(connection.Options);
-            _repositoryDay = new DbRepository<Models.Day>(connection.Options);
+            _repositoryDay = new DbRepository<Day>(connection.Options);
             _repositoryTypeOffice = new DbRepository<TypeOffice>(connection.Options);
             _repositoryOffice = new DbRepository<Office>(connection.Options);
             _repositoryLessonType = new DbRepository<LessonType>(connection.Options);
@@ -43,31 +44,20 @@ namespace WinFormsApp1
             _repositoryLesson = new DbRepository<Lesson>(connection.Options);
 
             LoadData();
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView2.AutoGenerateColumns = true;
-            dataGridView3.AutoGenerateColumns = true;
-            dataGridView4.AutoGenerateColumns = true;
-            dataGridView5.AutoGenerateColumns = true;
-            dataGridView6.AutoGenerateColumns = true;
-            dataGridView7.AutoGenerateColumns = true;
-            dataGridView8.AutoGenerateColumns = true;
-            dataGridView9.AutoGenerateColumns = true;
-            dataGridView10.AutoGenerateColumns = true;
-            dataGridView11.AutoGenerateColumns = true;
         }
 
         private void LoadData()
         {
-            dataGridView4.DataSource = _repositorySemester;
-            dataGridView3.DataSource = _repositoryWeek;
-            dataGridView2.DataSource = _repositoryDay;
-            dataGridView5.DataSource = _repositorySubject;
-            dataGridView7.DataSource = _repositoryTeacher;
-            dataGridView8.DataSource = _repositoryGroup;
-            dataGridView9.DataSource = _repositoryOffice;
-            dataGridView11.DataSource = _repositoryTypeOffice;
-            dataGridView6.DataSource = _repositoryLesssonOrder;
-            dataGridView10.DataSource = _repositoryLessonType;
+            dataGridView4.DataSource = new BindingList<Semester>(_repositorySemester.GetAll());
+            dataGridView3.DataSource = new BindingList<Week>(_repositoryWeek.GetAll());
+            dataGridView2.DataSource = new BindingList<Day>(_repositoryDay.GetAll());
+            dataGridView5.DataSource = new BindingList<Subject>(_repositorySubject.GetAll());
+            dataGridView7.DataSource = new BindingList<Teacher>(_repositoryTeacher.GetAll());
+            dataGridView8.DataSource = new BindingList<Group>(_repositoryGroup.GetAll());
+            dataGridView9.DataSource = new BindingList<Office>(_repositoryOffice.GetAll());
+            dataGridView11.DataSource = new BindingList<TypeOffice>(_repositoryTypeOffice.GetAll());
+            dataGridView6.DataSource = new BindingList<LesssonOrder>(_repositoryLesssonOrder.GetAll());
+            dataGridView10.DataSource = new BindingList<LessonType>(_repositoryLessonType.GetAll());
 
             dataGridView1.DataSource = new BindingList<LessonInfo>(
                 (from Lesson in _repositoryLesson.GetAll()
@@ -84,28 +74,55 @@ namespace WinFormsApp1
                  }).ToList());
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void ProcessEntity<TEntity>(DataGridView dataGrid, DbRepository<TEntity> repository, Action<TEntity> action) where TEntity : class, new()
         {
             try
             {
-                if (dataGridView4.CurrentRow == null) return;
+                var entityType = typeof(TEntity);
+                var entity = new TEntity();
 
-                int semesterId = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
-                int semesterNumber = Convert.ToInt32(dataGridView4.CurrentRow.Cells[1].Value);
-
-                var newSemester = new Semester
+                foreach (DataGridViewColumn column in dataGrid.Columns)
                 {
-                    SemesterID = semesterId,
-                    SemesterNumber = semesterNumber
-                };
-                _repositorySemester.Add(newSemester);
-                MessageBox.Show("Семестр добавлен!");
+                    var property = entityType.GetProperty(column.DataPropertyName);
+                    if (property != null && dataGrid.CurrentRow.Cells[column.Index].Value != null && dataGrid.CurrentRow.Cells[column.Index].Value != DBNull.Value)
+                    {
+                        var value = Convert.ChangeType(dataGrid.CurrentRow.Cells[column.Index].Value, property.PropertyType);
+                        property.SetValue(entity, value);
+                    }
+                }
+
+                action(entity);
+                MessageBox.Show("Данные добавлены!");
                 LoadData();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                MessageBox.Show("Ошибка добавления: " + ex.Message);
+                MessageBox.Show("Ошибка: " + e);
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1)
+                ProcessEntity(dataGridView2, _repositoryDay, entity => _repositoryDay.Add(entity));
+            else if (tabControl1.SelectedIndex == 2)
+                ProcessEntity(dataGridView3, _repositoryWeek, entity => _repositoryWeek.Add(entity));
+            else if (tabControl1.SelectedIndex == 3)
+                ProcessEntity(dataGridView4, _repositorySemester, entity => _repositorySemester.Add(entity));
+            else if (tabControl1.SelectedIndex == 4)
+                ProcessEntity(dataGridView5, _repositorySubject, entity => _repositorySubject.Add(entity));
+            else if (tabControl1.SelectedIndex == 9)
+                ProcessEntity(dataGridView6, _repositoryLesssonOrder, entity => _repositoryLesssonOrder.Add(entity));
+            else if (tabControl1.SelectedIndex == 5)
+                ProcessEntity(dataGridView7, _repositoryTeacher, entity => _repositoryTeacher.Add(entity));
+            else if (tabControl1.SelectedIndex == 6)
+                ProcessEntity(dataGridView8, _repositoryGroup, entity => _repositoryGroup.Add(entity));
+            else if (tabControl1.SelectedIndex == 7)
+                ProcessEntity(dataGridView9, _repositoryOffice, entity => _repositoryOffice.Add(entity));
+            else if (tabControl1.SelectedIndex == 10)
+                ProcessEntity(dataGridView10, _repositoryLessonType, entity => _repositoryLessonType.Add(entity));
+            else if (tabControl1.SelectedIndex == 8)
+                ProcessEntity(dataGridView11, _repositoryTypeOffice, entity => _repositoryTypeOffice.Add(entity));
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

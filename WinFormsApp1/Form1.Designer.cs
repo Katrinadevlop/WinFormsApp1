@@ -64,6 +64,7 @@
             Semesters = new TabPage();
             dataGridView4 = new DataGridView();
             semesterNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            semesterBindingSource1 = new BindingSource(components);
             semesterBindingSource = new BindingSource(components);
             Weeks = new TabPage();
             dataGridView3 = new DataGridView();
@@ -73,24 +74,30 @@
             weekBindingSource = new BindingSource(components);
             Day = new TabPage();
             dataGridView2 = new DataGridView();
-            dayIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dayNameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            lessonsDataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            weekDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dayBindingSource1 = new BindingSource(components);
+            Lessons = new TabPage();
+            dataGridView1 = new DataGridView();
             dayNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            weekIDDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             lessonsDataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             weekDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dayBindingSource = new BindingSource(components);
-            Lessons = new TabPage();
-            dataGridView1 = new DataGridView();
             tabControl1 = new TabControl();
             LesssonOrder = new TabPage();
+            dataGridView6 = new DataGridView();
+            lesssonOrderBindingSource = new BindingSource(components);
             LessonTypes = new TabPage();
+            dataGridView10 = new DataGridView();
+            lessonTypeBindingSource = new BindingSource(components);
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            dataGridView6 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridView10 = new DataGridView();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            lesssonOrder1DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lessonsDataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            lessonTypesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lessonsDataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             TypeOffices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)typeOfficeBindingSource).BeginInit();
@@ -109,20 +116,24 @@
             ((System.ComponentModel.ISupportInitialize)subjectBindingSource).BeginInit();
             Semesters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)semesterBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)semesterBindingSource).BeginInit();
             Weeks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)weekBindingSource).BeginInit();
             Day.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dayBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dayBindingSource1).BeginInit();
             Lessons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dayBindingSource).BeginInit();
             tabControl1.SuspendLayout();
             LesssonOrder.SuspendLayout();
-            LessonTypes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lesssonOrderBindingSource).BeginInit();
+            LessonTypes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lessonTypeBindingSource).BeginInit();
             SuspendLayout();
             // 
             // TypeOffices
@@ -407,7 +418,7 @@
             dataGridView4.AutoGenerateColumns = false;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView4.Columns.AddRange(new DataGridViewColumn[] { semesterNumberDataGridViewTextBoxColumn });
-            dataGridView4.DataSource = semesterBindingSource;
+            dataGridView4.DataSource = semesterBindingSource1;
             dataGridView4.Location = new Point(6, 5);
             dataGridView4.Name = "dataGridView4";
             dataGridView4.RowHeadersWidth = 62;
@@ -421,6 +432,10 @@
             semesterNumberDataGridViewTextBoxColumn.MinimumWidth = 8;
             semesterNumberDataGridViewTextBoxColumn.Name = "semesterNumberDataGridViewTextBoxColumn";
             semesterNumberDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // semesterBindingSource1
+            // 
+            semesterBindingSource1.DataSource = typeof(Models.Semester);
             // 
             // semesterBindingSource
             // 
@@ -492,21 +507,64 @@
             // 
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dayIDDataGridViewTextBoxColumn, dayNameDataGridViewTextBoxColumn, weekIDDataGridViewTextBoxColumn1, lessonsDataGridViewTextBoxColumn3, weekDataGridViewTextBoxColumn });
-            dataGridView2.DataSource = dayBindingSource;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dayNameDataGridViewTextBoxColumn1, lessonsDataGridViewTextBoxColumn6, weekDataGridViewTextBoxColumn1 });
+            dataGridView2.DataSource = dayBindingSource1;
             dataGridView2.Location = new Point(6, 5);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 62;
             dataGridView2.Size = new Size(1103, 655);
             dataGridView2.TabIndex = 1;
             // 
-            // dayIDDataGridViewTextBoxColumn
+            // dayNameDataGridViewTextBoxColumn1
             // 
-            dayIDDataGridViewTextBoxColumn.DataPropertyName = "DayID";
-            dayIDDataGridViewTextBoxColumn.HeaderText = "DayID";
-            dayIDDataGridViewTextBoxColumn.MinimumWidth = 8;
-            dayIDDataGridViewTextBoxColumn.Name = "dayIDDataGridViewTextBoxColumn";
-            dayIDDataGridViewTextBoxColumn.Width = 150;
+            dayNameDataGridViewTextBoxColumn1.DataPropertyName = "DayName";
+            dayNameDataGridViewTextBoxColumn1.HeaderText = "DayName";
+            dayNameDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            dayNameDataGridViewTextBoxColumn1.Name = "dayNameDataGridViewTextBoxColumn1";
+            dayNameDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // lessonsDataGridViewTextBoxColumn6
+            // 
+            lessonsDataGridViewTextBoxColumn6.DataPropertyName = "Lessons";
+            lessonsDataGridViewTextBoxColumn6.HeaderText = "Lessons";
+            lessonsDataGridViewTextBoxColumn6.MinimumWidth = 8;
+            lessonsDataGridViewTextBoxColumn6.Name = "lessonsDataGridViewTextBoxColumn6";
+            lessonsDataGridViewTextBoxColumn6.Width = 150;
+            // 
+            // weekDataGridViewTextBoxColumn1
+            // 
+            weekDataGridViewTextBoxColumn1.DataPropertyName = "Week";
+            weekDataGridViewTextBoxColumn1.HeaderText = "Week";
+            weekDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            weekDataGridViewTextBoxColumn1.Name = "weekDataGridViewTextBoxColumn1";
+            weekDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dayBindingSource1
+            // 
+            dayBindingSource1.DataSource = typeof(Models.Day);
+            // 
+            // Lessons
+            // 
+            Lessons.Controls.Add(dataGridView1);
+            Lessons.Location = new Point(4, 34);
+            Lessons.Name = "Lessons";
+            Lessons.Padding = new Padding(3);
+            Lessons.Size = new Size(1115, 664);
+            Lessons.TabIndex = 0;
+            Lessons.Text = "Lessons";
+            Lessons.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dayNameDataGridViewTextBoxColumn, lessonsDataGridViewTextBoxColumn3, weekDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = dayBindingSource;
+            dataGridView1.Location = new Point(6, 6);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1103, 655);
+            dataGridView1.TabIndex = 0;
             // 
             // dayNameDataGridViewTextBoxColumn
             // 
@@ -515,14 +573,6 @@
             dayNameDataGridViewTextBoxColumn.MinimumWidth = 8;
             dayNameDataGridViewTextBoxColumn.Name = "dayNameDataGridViewTextBoxColumn";
             dayNameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // weekIDDataGridViewTextBoxColumn1
-            // 
-            weekIDDataGridViewTextBoxColumn1.DataPropertyName = "WeekID";
-            weekIDDataGridViewTextBoxColumn1.HeaderText = "WeekID";
-            weekIDDataGridViewTextBoxColumn1.MinimumWidth = 8;
-            weekIDDataGridViewTextBoxColumn1.Name = "weekIDDataGridViewTextBoxColumn1";
-            weekIDDataGridViewTextBoxColumn1.Width = 150;
             // 
             // lessonsDataGridViewTextBoxColumn3
             // 
@@ -543,26 +593,6 @@
             // dayBindingSource
             // 
             dayBindingSource.DataSource = typeof(Models.Day);
-            // 
-            // Lessons
-            // 
-            Lessons.Controls.Add(dataGridView1);
-            Lessons.Location = new Point(4, 34);
-            Lessons.Name = "Lessons";
-            Lessons.Padding = new Padding(3);
-            Lessons.Size = new Size(1115, 664);
-            Lessons.TabIndex = 0;
-            Lessons.Text = "Lessons";
-            Lessons.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 6);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1103, 655);
-            dataGridView1.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -592,7 +622,22 @@
             LesssonOrder.TabIndex = 11;
             LesssonOrder.Text = "LesssonOrder";
             LesssonOrder.UseVisualStyleBackColor = true;
-            LesssonOrder.Click += LesssonOrder_Click;
+            // 
+            // dataGridView6
+            // 
+            dataGridView6.AutoGenerateColumns = false;
+            dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView6.Columns.AddRange(new DataGridViewColumn[] { lesssonOrder1DataGridViewTextBoxColumn, lessonsDataGridViewTextBoxColumn4 });
+            dataGridView6.DataSource = lesssonOrderBindingSource;
+            dataGridView6.Location = new Point(6, 5);
+            dataGridView6.Name = "dataGridView6";
+            dataGridView6.RowHeadersWidth = 62;
+            dataGridView6.Size = new Size(1103, 655);
+            dataGridView6.TabIndex = 3;
+            // 
+            // lesssonOrderBindingSource
+            // 
+            lesssonOrderBindingSource.DataSource = typeof(Models.LesssonOrder);
             // 
             // LessonTypes
             // 
@@ -603,6 +648,22 @@
             LessonTypes.TabIndex = 13;
             LessonTypes.Text = "LessonTypes";
             LessonTypes.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView10
+            // 
+            dataGridView10.AutoGenerateColumns = false;
+            dataGridView10.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView10.Columns.AddRange(new DataGridViewColumn[] { lessonTypesDataGridViewTextBoxColumn, lessonsDataGridViewTextBoxColumn5 });
+            dataGridView10.DataSource = lessonTypeBindingSource;
+            dataGridView10.Location = new Point(6, 5);
+            dataGridView10.Name = "dataGridView10";
+            dataGridView10.RowHeadersWidth = 62;
+            dataGridView10.Size = new Size(1103, 655);
+            dataGridView10.TabIndex = 3;
+            // 
+            // lessonTypeBindingSource
+            // 
+            lessonTypeBindingSource.DataSource = typeof(Models.LessonType);
             // 
             // button1
             // 
@@ -634,45 +695,37 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += btnDelete_Click;
             // 
-            // dataGridView6
+            // lesssonOrder1DataGridViewTextBoxColumn
             // 
-            dataGridView6.AutoGenerateColumns = false;
-            dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView6.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1 });
-            dataGridView6.DataSource = typeOfficeBindingSource;
-            dataGridView6.Location = new Point(6, 5);
-            dataGridView6.Name = "dataGridView6";
-            dataGridView6.RowHeadersWidth = 62;
-            dataGridView6.Size = new Size(1103, 655);
-            dataGridView6.TabIndex = 3;
+            lesssonOrder1DataGridViewTextBoxColumn.DataPropertyName = "LesssonOrder1";
+            lesssonOrder1DataGridViewTextBoxColumn.HeaderText = "LesssonOrder1";
+            lesssonOrder1DataGridViewTextBoxColumn.MinimumWidth = 8;
+            lesssonOrder1DataGridViewTextBoxColumn.Name = "lesssonOrder1DataGridViewTextBoxColumn";
+            lesssonOrder1DataGridViewTextBoxColumn.Width = 150;
             // 
-            // dataGridViewTextBoxColumn1
+            // lessonsDataGridViewTextBoxColumn4
             // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "OfficeType";
-            dataGridViewTextBoxColumn1.HeaderText = "OfficeType";
-            dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.Width = 150;
+            lessonsDataGridViewTextBoxColumn4.DataPropertyName = "Lessons";
+            lessonsDataGridViewTextBoxColumn4.HeaderText = "Lessons";
+            lessonsDataGridViewTextBoxColumn4.MinimumWidth = 8;
+            lessonsDataGridViewTextBoxColumn4.Name = "lessonsDataGridViewTextBoxColumn4";
+            lessonsDataGridViewTextBoxColumn4.Width = 150;
             // 
-            // dataGridView10
+            // lessonTypesDataGridViewTextBoxColumn
             // 
-            dataGridView10.AutoGenerateColumns = false;
-            dataGridView10.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView10.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2 });
-            dataGridView10.DataSource = typeOfficeBindingSource;
-            dataGridView10.Location = new Point(6, 5);
-            dataGridView10.Name = "dataGridView10";
-            dataGridView10.RowHeadersWidth = 62;
-            dataGridView10.Size = new Size(1103, 655);
-            dataGridView10.TabIndex = 3;
+            lessonTypesDataGridViewTextBoxColumn.DataPropertyName = "LessonTypes";
+            lessonTypesDataGridViewTextBoxColumn.HeaderText = "LessonTypes";
+            lessonTypesDataGridViewTextBoxColumn.MinimumWidth = 8;
+            lessonTypesDataGridViewTextBoxColumn.Name = "lessonTypesDataGridViewTextBoxColumn";
+            lessonTypesDataGridViewTextBoxColumn.Width = 150;
             // 
-            // dataGridViewTextBoxColumn2
+            // lessonsDataGridViewTextBoxColumn5
             // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "OfficeType";
-            dataGridViewTextBoxColumn2.HeaderText = "OfficeType";
-            dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.Width = 150;
+            lessonsDataGridViewTextBoxColumn5.DataPropertyName = "Lessons";
+            lessonsDataGridViewTextBoxColumn5.HeaderText = "Lessons";
+            lessonsDataGridViewTextBoxColumn5.MinimumWidth = 8;
+            lessonsDataGridViewTextBoxColumn5.Name = "lessonsDataGridViewTextBoxColumn5";
+            lessonsDataGridViewTextBoxColumn5.Width = 150;
             // 
             // Form1
             // 
@@ -703,20 +756,24 @@
             ((System.ComponentModel.ISupportInitialize)subjectBindingSource).EndInit();
             Semesters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)semesterBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)semesterBindingSource).EndInit();
             Weeks.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ((System.ComponentModel.ISupportInitialize)weekBindingSource).EndInit();
             Day.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dayBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dayBindingSource1).EndInit();
             Lessons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dayBindingSource).EndInit();
             tabControl1.ResumeLayout(false);
             LesssonOrder.ResumeLayout(false);
-            LessonTypes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lesssonOrderBindingSource).EndInit();
+            LessonTypes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lessonTypeBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -743,12 +800,7 @@
         private DataGridViewTextBoxColumn dayIdDataGridViewTextBoxColumn;
         private BindingSource semesterBindingSource;
         private DataGridViewTextBoxColumn weekIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn weekNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn semesterIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn daysDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn semesterDataGridViewTextBoxColumn;
-        private BindingSource weekBindingSource;
-        private BindingSource dayBindingSource;
         private DataGridViewTextBoxColumn lessonIdDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn groupIdDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn officeIdDataGridViewTextBoxColumn1;
@@ -796,16 +848,28 @@
         private Button button3;
         private DataGridViewTextBoxColumn semesterIdDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn semesterNumberDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dayIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dayNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn weekIDDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn lessonsDataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn weekDataGridViewTextBoxColumn;
         private TabPage LesssonOrder;
         private TabPage LessonTypes;
         private DataGridView dataGridView6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridView dataGridView10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private BindingSource lesssonOrderBindingSource;
+        private BindingSource lessonTypeBindingSource;
+        private BindingSource semesterBindingSource1;
+        private DataGridViewTextBoxColumn weekNumberDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn daysDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn semesterDataGridViewTextBoxColumn;
+        private BindingSource weekBindingSource;
+        private DataGridViewTextBoxColumn dayNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lessonsDataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn weekDataGridViewTextBoxColumn;
+        private BindingSource dayBindingSource;
+        private DataGridViewTextBoxColumn dayNameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn lessonsDataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn weekDataGridViewTextBoxColumn1;
+        private BindingSource dayBindingSource1;
+        private DataGridViewTextBoxColumn lesssonOrder1DataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lessonsDataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn lessonTypesDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lessonsDataGridViewTextBoxColumn5;
     }
 }
