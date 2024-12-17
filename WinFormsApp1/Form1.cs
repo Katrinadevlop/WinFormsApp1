@@ -966,7 +966,7 @@ namespace WinFormsApp1
                 };
 
                 _repositoryLesson.Add(lesson);
-                MessageBox.Show("Данные сохранились");
+                MessageBox.Show("Расписание сохранилось");
                 LoadData();
             }
             catch(Exception ex)
@@ -977,12 +977,49 @@ namespace WinFormsApp1
 
         private void button11_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var lessonID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                var existingLesson = _repositoryLesson.GetAll().FirstOrDefault(l => l.LessonID == lessonID);
 
+                var lesson = new Lesson
+                {
+                    LessonID = lessonID,
+                };
+
+                _repositoryLesson.Update(lesson);
+                MessageBox.Show("Расписание изменилось");
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Расписание не изменилось" + ex);
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var lessonID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                var existingLesson = _repositoryLesson.GetAll().FirstOrDefault(l => l.LessonID == lessonID);
 
+                if (existingLesson != null)
+                {
+                    _repositoryLesson.Delete(existingLesson); 
+                    MessageBox.Show("Расписание удалилось");
+                }
+                else
+                {
+                    MessageBox.Show("Расписание не найдено");
+                }
+
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Расписание не удалилось: " + ex.Message);
+            }
         }
     }
 }

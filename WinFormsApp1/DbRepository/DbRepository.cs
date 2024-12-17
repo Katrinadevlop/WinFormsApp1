@@ -39,5 +39,10 @@ namespace WinFormsApp1.DbRepository
             _context.Set<T>().Remove(entity);
             _context.SaveChanges();
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }
