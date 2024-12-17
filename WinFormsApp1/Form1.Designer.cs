@@ -939,6 +939,7 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1103, 655);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
             // lessonIDDataGridViewTextBoxColumn
             // 

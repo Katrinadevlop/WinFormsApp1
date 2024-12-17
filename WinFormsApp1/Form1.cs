@@ -31,6 +31,8 @@ namespace WinFormsApp1
 
         private DbRepository<Lesson> _repositoryLesson;
 
+        public string? ResultMessage { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -85,7 +87,8 @@ namespace WinFormsApp1
                 dayColumn.Name = "DayColumn";
                 dayColumn.DisplayMember = "DayName";
                 dayColumn.ValueMember = "DayID";
-                dayColumn.DataSource = new BindingList<Day>(_repositoryDay.GetAll()); ;
+                dayColumn.DataSource = new BindingList<Day>(_repositoryDay.GetAll());
+
                 dataGridView1.Columns.Add(dayColumn);
 
                 DataGridViewComboBoxColumn groupColumn = new DataGridViewComboBoxColumn();
@@ -93,7 +96,7 @@ namespace WinFormsApp1
                 groupColumn.Name = "GroupColumn";
                 groupColumn.DisplayMember = "GroupName";
                 groupColumn.ValueMember = "GroupID";
-                groupColumn.DataSource = new BindingList<Group>(_repositoryGroup.GetAll()); ;
+                groupColumn.DataSource = new BindingList<Group>(_repositoryGroup.GetAll());
                 dataGridView1.Columns.Add(groupColumn);
 
                 DataGridViewComboBoxColumn teacherColumn = new DataGridViewComboBoxColumn();
@@ -101,7 +104,7 @@ namespace WinFormsApp1
                 teacherColumn.Name = "TeacherColumn";
                 teacherColumn.DisplayMember = "LastName";
                 teacherColumn.ValueMember = "TeacherID";
-                teacherColumn.DataSource = new BindingList<Teacher>(_repositoryTeacher.GetAll()); ;
+                teacherColumn.DataSource = new BindingList<Teacher>(_repositoryTeacher.GetAll());
                 dataGridView1.Columns.Add(teacherColumn);
 
                 DataGridViewComboBoxColumn subjectColumn = new DataGridViewComboBoxColumn();
@@ -109,7 +112,7 @@ namespace WinFormsApp1
                 subjectColumn.Name = "SubjectColumn";
                 subjectColumn.DisplayMember = "SubjectName";
                 subjectColumn.ValueMember = "SubjectID";
-                subjectColumn.DataSource = new BindingList<Subject>(_repositorySubject.GetAll()); ;
+                subjectColumn.DataSource = new BindingList<Subject>(_repositorySubject.GetAll());
                 dataGridView1.Columns.Add(subjectColumn);
 
                 DataGridViewComboBoxColumn officeColumn = new DataGridViewComboBoxColumn();
@@ -117,7 +120,7 @@ namespace WinFormsApp1
                 officeColumn.Name = "OfficeColumn";
                 officeColumn.DisplayMember = "NumberSeats";
                 officeColumn.ValueMember = "OfficeID";
-                officeColumn.DataSource = new BindingList<Office>(_repositoryOffice.GetAll()); ;
+                officeColumn.DataSource = new BindingList<Office>(_repositoryOffice.GetAll());
                 dataGridView1.Columns.Add(officeColumn);
 
                 var lessonInfo = (from Lesson in lessonData
@@ -129,11 +132,11 @@ namespace WinFormsApp1
                                   select new LessonInfo
                                   {
                                       LessonID = Lesson.LessonID,
-                                      DayName = Day.DayName,
-                                      GroupName = Group.GroupName,
-                                      TeacherName = Teacher.LastName,
-                                      OfficeName = Office.NumberSeats.ToString(),
-                                      SubjectName = Subject.SubjectName,
+                                      DayID = Lesson.DayID,
+                                      GroupID = Lesson.GroupID,
+                                      TeacherID = Lesson.TeacherID,
+                                      OfficeID = Lesson.OfficeID,
+                                      SubjectID = Lesson.SubjectID,
                                   }).ToList();
 
                 dataGridView1.DataSource = new BindingList<LessonInfo>(lessonInfo);
@@ -144,7 +147,7 @@ namespace WinFormsApp1
             }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        public void btnAdd_Click(object sender, EventArgs e)
         {
             var semesterId = Convert.ToInt16(dataGridView4.CurrentRow.Cells[0].Value);
             var semesterNumber = Convert.ToInt16(dataGridView4.CurrentRow.Cells[1].Value);
@@ -1055,6 +1058,17 @@ namespace WinFormsApp1
             else
             {
                 MessageBox.Show("Расписание пустое");
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "DayColumn")
+            {
+                if (e.Value != null)
+                {
+                    e.Value = e.Value.ToString();
+                }
             }
         }
     }

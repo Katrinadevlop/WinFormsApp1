@@ -3,6 +3,7 @@ C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\W
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.runtimeconfig.json
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.dll
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\WinFormsApp1.pdb
+C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\CsvHelper.dll
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
@@ -24,11 +25,10 @@ C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\W
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfoInputs.cache
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfo.cs
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.sourcelink.json
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinForms.E4050A35.Up2Date
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.dll
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\refint\WinFormsApp1.dll
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.pdb
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.genruntimeconfig.cache
 C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\ref\WinFormsApp1.dll
-C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.sourcelink.json
-C:\Users\katya\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\CsvHelper.dll
