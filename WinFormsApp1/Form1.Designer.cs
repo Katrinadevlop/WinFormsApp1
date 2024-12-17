@@ -106,10 +106,17 @@
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dayBindingSource1 = new BindingSource(components);
             Lessons = new TabPage();
+            button34 = new Button();
             button10 = new Button();
             button11 = new Button();
             button12 = new Button();
             dataGridView1 = new DataGridView();
+            lessonIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             lessonBindingSource = new BindingSource(components);
             dayBindingSource = new BindingSource(components);
             tabControl1 = new TabControl();
@@ -129,12 +136,6 @@
             LessonTypesID = new DataGridViewTextBoxColumn();
             lessonTypesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lessonTypeBindingSource = new BindingSource(components);
-            lessonIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             TypeOffices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)typeOfficeBindingSource).BeginInit();
@@ -874,6 +875,7 @@
             // 
             // Lessons
             // 
+            Lessons.Controls.Add(button34);
             Lessons.Controls.Add(button10);
             Lessons.Controls.Add(button11);
             Lessons.Controls.Add(button12);
@@ -885,6 +887,16 @@
             Lessons.TabIndex = 0;
             Lessons.Text = "Lessons";
             Lessons.UseVisualStyleBackColor = true;
+            // 
+            // button34
+            // 
+            button34.Location = new Point(1112, 199);
+            button34.Name = "button34";
+            button34.Size = new Size(112, 60);
+            button34.TabIndex = 9;
+            button34.Text = "Сохранить в csv";
+            button34.UseVisualStyleBackColor = true;
+            button34.Click += button34_Click;
             // 
             // button10
             // 
@@ -927,6 +939,59 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1103, 655);
             dataGridView1.TabIndex = 0;
+            // 
+            // lessonIDDataGridViewTextBoxColumn
+            // 
+            lessonIDDataGridViewTextBoxColumn.DataPropertyName = "LessonID";
+            lessonIDDataGridViewTextBoxColumn.HeaderText = "LessonID";
+            lessonIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            lessonIDDataGridViewTextBoxColumn.Name = "lessonIDDataGridViewTextBoxColumn";
+            lessonIDDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "DayID";
+            dataGridViewTextBoxColumn3.HeaderText = "DayID";
+            dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Visible = false;
+            dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "GroupID";
+            dataGridViewTextBoxColumn4.HeaderText = "GroupID";
+            dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Visible = false;
+            dataGridViewTextBoxColumn4.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            dataGridViewTextBoxColumn7.DataPropertyName = "TeacherID";
+            dataGridViewTextBoxColumn7.HeaderText = "TeacherID";
+            dataGridViewTextBoxColumn7.MinimumWidth = 8;
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.Visible = false;
+            dataGridViewTextBoxColumn7.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.DataPropertyName = "SubjectID";
+            dataGridViewTextBoxColumn6.HeaderText = "SubjectID";
+            dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.Visible = false;
+            dataGridViewTextBoxColumn6.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "OfficeID";
+            dataGridViewTextBoxColumn5.HeaderText = "OfficeID";
+            dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.Visible = false;
+            dataGridViewTextBoxColumn5.Width = 150;
             // 
             // lessonBindingSource
             // 
@@ -1104,59 +1169,6 @@
             // lessonTypeBindingSource
             // 
             lessonTypeBindingSource.DataSource = typeof(Models.LessonType);
-            // 
-            // lessonIDDataGridViewTextBoxColumn
-            // 
-            lessonIDDataGridViewTextBoxColumn.DataPropertyName = "LessonID";
-            lessonIDDataGridViewTextBoxColumn.HeaderText = "LessonID";
-            lessonIDDataGridViewTextBoxColumn.MinimumWidth = 8;
-            lessonIDDataGridViewTextBoxColumn.Name = "lessonIDDataGridViewTextBoxColumn";
-            lessonIDDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "DayID";
-            dataGridViewTextBoxColumn3.HeaderText = "DayID";
-            dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.Visible = false;
-            dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "GroupID";
-            dataGridViewTextBoxColumn4.HeaderText = "GroupID";
-            dataGridViewTextBoxColumn4.MinimumWidth = 8;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.Visible = false;
-            dataGridViewTextBoxColumn4.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "TeacherID";
-            dataGridViewTextBoxColumn7.HeaderText = "TeacherID";
-            dataGridViewTextBoxColumn7.MinimumWidth = 8;
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.Visible = false;
-            dataGridViewTextBoxColumn7.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "SubjectID";
-            dataGridViewTextBoxColumn6.HeaderText = "SubjectID";
-            dataGridViewTextBoxColumn6.MinimumWidth = 8;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.Visible = false;
-            dataGridViewTextBoxColumn6.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "OfficeID";
-            dataGridViewTextBoxColumn5.HeaderText = "OfficeID";
-            dataGridViewTextBoxColumn5.MinimumWidth = 8;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.Visible = false;
-            dataGridViewTextBoxColumn5.Width = 150;
             // 
             // Form1
             // 
@@ -1336,5 +1348,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private Button button34;
     }
 }

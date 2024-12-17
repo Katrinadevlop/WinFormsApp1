@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using WinFormsApp1.DbRepository;
 using WinFormsApp1.Models;
 using Day = WinFormsApp1.Models.Day;
+using CsvHelper;
+using System.Globalization;
 
 namespace WinFormsApp1
 {
@@ -120,7 +122,7 @@ namespace WinFormsApp1
 
                 var lessonInfo = (from Lesson in lessonData
                                   join Office in officeData on Lesson.OfficeID equals Office.OfficeID
-                                  join Day in dayData on Lesson.DayID equals Day.DayID                                  
+                                  join Day in dayData on Lesson.DayID equals Day.DayID
                                   join Group in groupData on Lesson.GroupID equals Group.GroupID
                                   join Subject in subjectData on Lesson.SubjectID equals Subject.SubjectID
                                   join Teacher in teacherData on Lesson.TeacherID equals Teacher.TeacherID
@@ -950,9 +952,9 @@ namespace WinFormsApp1
             {
                 var lessonID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                 var dayID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[6].Value);
-                var groupID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[7].Value); 
-                var teacherID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[8].Value); 
-                var subjectID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[9].Value); 
+                var groupID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[7].Value);
+                var teacherID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[8].Value);
+                var subjectID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[9].Value);
                 var officeID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[10].Value);
 
                 var lesson = new Lesson
@@ -969,7 +971,7 @@ namespace WinFormsApp1
                 MessageBox.Show("Расписание сохранилось");
                 LoadData();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Расписание не сохранилось" + ex);
             }
@@ -1006,7 +1008,7 @@ namespace WinFormsApp1
 
                 if (existingLesson != null)
                 {
-                    _repositoryLesson.Delete(existingLesson); 
+                    _repositoryLesson.Delete(existingLesson);
                     MessageBox.Show("Расписание удалилось");
                 }
                 else
@@ -1019,6 +1021,40 @@ namespace WinFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show("Расписание не удалилось: " + ex.Message);
+            }
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            using var writer = new StreamWriter("C:\\Users\\katya\\source\\repos\\WindowsFormsApp1\\lessons.csv");
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+
+            csv.WriteField("LessonID");
+            csv.WriteField("Day");
+            csv.WriteField("Group");
+            csv.WriteField("Teacher");
+            csv.WriteField("Subject");
+            csv.WriteField("Office");
+            csv.NextRecord();
+
+            var lessons = _repositoryLesson.GetAll();
+            if (lessons != null && lessons.Any())
+            {
+                foreach (var lesson in lessons)
+                {
+                    csv.WriteField(lesson.LessonID);
+                    csv.WriteField(lesson.Day);
+                    csv.WriteField(lesson.Group);
+                    csv.WriteField(lesson.Teacher);
+                    csv.WriteField(lesson.Subject);
+                    csv.WriteField(lesson.Office);
+                    csv.NextRecord();
+                }
+                MessageBox.Show("Расписание сохранилось в файл");
+            }
+            else
+            {
+                MessageBox.Show("Расписание пустое");
             }
         }
     }
