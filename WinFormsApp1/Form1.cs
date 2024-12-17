@@ -12,6 +12,10 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
+        ComboBox comboBoxGroup = new ComboBox();
+        ComboBox comboBoxTeacher = new ComboBox();
+        ComboBox comboBoxOffice = new ComboBox();
+
         private DbRepository<Semester> _repositorySemester;
         private DbRepository<Week> _repositoryWeek;
         private DbRepository<Day> _repositoryDay;
@@ -44,38 +48,115 @@ namespace WinFormsApp1
 
             _repositoryLesson = new DbRepository<Lesson>(connection.Options);
 
+            ConfigureDataGridView();
             LoadData();
         }
 
+        private void ConfigureDataGridView()
+        {
+            dataGridView1.AutoGenerateColumns = false;
+
+            // Колонка для кабинета
+            var officeColumn = new DataGridViewTextBoxColumn
+            {
+                Name = "OfficeName",
+                HeaderText = "Кабинет",
+                DataPropertyName = "OfficeName",
+                ReadOnly = true
+            };
+
+            // Колонка для комбобокса с группами, преподавателями и предметами
+            var comboBoxColumn = new DataGridViewComboBoxColumn
+            {
+                Name = "GroupTeacherSubject",
+                HeaderText = "Группа, Преподаватель, Предмет",
+                DisplayMember = "DisplayName", // свойство для отображения
+                ValueMember = "Value", // значение, которое будет использоваться
+                DataPropertyName = "GroupTeacherSubject", // имя свойства для привязки
+            };
+
+            // Заполняем комбобоксы для столбца с группами, преподавателями и предметами
+            var comboData = _repositoryGroup.GetAll().Join(_repositoryTeacher.GetAll(),
+                group => group.GroupID,
+                teacher => teacher.TeacherID,
+                (group, teacher) => new
+                {
+                    DisplayName = $"{group.GroupName} - {teacher.LastName} ({teacher.TeacherID})",
+                    Value = group.GroupID // или другое значение, в зависимости от ваших требований
+                }).ToList();
+
+            comboBoxColumn.DataSource = comboData;
+
+            // Добавляем столбцы в DataGridView
+            dataGridView1.Columns.AddRange(officeColumn, comboBoxColumn);
+        }
+
+
         private void LoadData()
         {
-            dataGridView4.DataSource = new BindingList<Semester>(_repositorySemester.GetAll());
-            dataGridView3.DataSource = new BindingList<Week>(_repositoryWeek.GetAll());
-            dataGridView2.DataSource = new BindingList<Day>(_repositoryDay.GetAll());
-            dataGridView5.DataSource = new BindingList<Subject>(_repositorySubject.GetAll());
-            dataGridView7.DataSource = new BindingList<Teacher>(_repositoryTeacher.GetAll());
-            dataGridView8.DataSource = new BindingList<Group>(_repositoryGroup.GetAll());
-            dataGridView9.DataSource = new BindingList<Office>(_repositoryOffice.GetAll());
-            dataGridView11.DataSource = new BindingList<TypeOffice>(_repositoryTypeOffice.GetAll());
-            dataGridView6.DataSource = new BindingList<LesssonOrder>(_repositoryLesssonOrder.GetAll());
-            dataGridView10.DataSource = new BindingList<LessonType>(_repositoryLessonType.GetAll());
+            try
+            {
+                var semesterData = _repositorySemester.GetAll();
+                var weekData = _repositoryWeek.GetAll();
+                var dayData = _repositoryDay.GetAll();
+                var subjectData = _repositorySubject.GetAll();
+                var teacherData = _repositoryTeacher.GetAll();
+                var groupData = _repositoryGroup.GetAll();
+                var officeData = _repositoryOffice.GetAll();
+                var typeOfficeData = _repositoryTypeOffice.GetAll();
+                var lesssonOrderData = _repositoryLesssonOrder.GetAll();
+                var lessonTypeData = _repositoryLessonType.GetAll();
+                var lessonData = _repositoryLesson.GetAll();
+                var lessonInfo = (from Lesson in lessonData
+                                    join Office in officeData on Lesson.OfficeID equals Office.OfficeID
+                                    join Group in groupData on Lesson.GroupID equals Group.GroupID
+                                    join Subject in subjectData on Lesson.SubjectID equals Subject.SubjectID
+                                    join Teacher in teacherData on Lesson.TeacherID equals Teacher.TeacherID
+                                    select new LessonInfo
+                                    {
+                                        LessonID = Lesson.LessonID,
+                                        GroupName = Group.GroupName,
+                                        TeacherName = Teacher.LastName,
+                                        OfficeName = Office.OfficeID.ToString(),
+                                        SubjectName = Subject.SubjectName,
+                                    }).ToList();
 
-            dataGridView1.DataSource = new BindingList<LessonInfo>(
-                (from Lesson in _repositoryLesson.GetAll()
-                 join Office in _repositoryOffice.GetAll() on Lesson.OfficeID equals Office.OfficeID
-                 join Group in _repositoryGroup.GetAll() on Lesson.GroupID equals Group.GroupID
-                 join Subject in _repositorySubject.GetAll() on Lesson.SubjectID equals Subject.SubjectID
-                 join Teacher in _repositoryTeacher.GetAll() on Lesson.TeacherID equals Teacher.TeacherID
-                 select new LessonInfo
-                 {
-                     OfficeName = Office.OfficeID,
-                     GroupName = Group.GroupName,
-                     SubjectName = Subject.SubjectName,
-                     TeacherName = Teacher.LastName
+                dataGridView1.DataSource = new BindingList<LessonInfo>(lessonInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0) 
+            {
+                if (e.RowIndex % 3 == 0)
+                {
+                    int mergeHeight = dataGridView1.Rows[e.RowIndex].Height * 3;
 
-                 }).ToList());
-                 //var comboBox = DataGridViewComboBoxColumn(dataGridView1.DataSource);
+                    Rectangle rect = new Rectangle(e.CellBounds.Left, e.CellBounds.Top, e.CellBounds.Width, mergeHeight);
+                    using (Brush backColorBrush = new SolidBrush(e.CellStyle.BackColor))
+                    {
+                        e.Graphics.FillRectangle(backColorBrush, rect);
+                    }
+                    e.Graphics.DrawRectangle(Pens.Black, rect);
+
+                    if (e.RowIndex % 3 == 0)
+                    {
+                        string groupText = 1.ToString(); 
+                        TextRenderer.DrawText(e.Graphics, groupText, e.CellStyle.Font, rect, e.CellStyle.ForeColor);
+                    }
+
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = true; 
+                }
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

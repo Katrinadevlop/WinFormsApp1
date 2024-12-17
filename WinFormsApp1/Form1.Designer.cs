@@ -128,8 +128,6 @@
             LessonTypesID = new DataGridViewTextBoxColumn();
             lessonTypesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lessonTypeBindingSource = new BindingSource(components);
-            First = new DataGridViewComboBoxColumn();
-            Second = new DataGridViewComboBoxColumn();
             TypeOffices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)typeOfficeBindingSource).BeginInit();
@@ -910,12 +908,12 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { First, Second });
             dataGridView1.Location = new Point(6, 6);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1103, 655);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellPainting += dataGridView1_CellPainting;
             // 
             // dayBindingSource
             // 
@@ -1090,22 +1088,6 @@
             // 
             lessonTypeBindingSource.DataSource = typeof(Models.LessonType);
             // 
-            // First
-            // 
-            First.HeaderText = "First";
-            First.MinimumWidth = 8;
-            First.Name = "First";
-            First.Width = 150;
-            // 
-            // Second
-            // 
-            Second.HeaderText = "Second";
-            Second.MinimumWidth = 8;
-            Second.Name = "Second";
-            Second.Resizable = DataGridViewTriState.True;
-            Second.SortMode = DataGridViewColumnSortMode.Automatic;
-            Second.Width = 150;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -1276,7 +1258,5 @@
         private DataGridViewTextBoxColumn lesssonOrder1DataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn LessonTypesID;
         private DataGridViewTextBoxColumn lessonTypesDataGridViewTextBoxColumn;
-        private DataGridViewComboBoxColumn First;
-        private DataGridViewComboBoxColumn Second;
     }
 }

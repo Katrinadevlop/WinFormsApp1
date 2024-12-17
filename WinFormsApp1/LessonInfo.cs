@@ -8,9 +8,10 @@ namespace WinFormsApp1
 {
     internal class LessonInfo
     {
-        public int OfficeName { get; set; }
+        public int LessonID { get; set; }
         public string GroupName { get; set; }
-        public string SubjectName { get; set; }
         public string TeacherName { get; set; }
+        public string OfficeName { get; set; }
+        public string SubjectName { get; set; }
     }
 }
