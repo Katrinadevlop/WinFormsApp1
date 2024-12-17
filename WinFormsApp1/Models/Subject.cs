@@ -24,4 +24,9 @@ public partial class Subject
     public string Subjectscol { get; set; }
 
     public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
+
+    public static implicit operator Subject(string v)
+    {
+        throw new NotImplementedException();
+    }
 }

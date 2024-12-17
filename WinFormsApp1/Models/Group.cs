@@ -12,4 +12,9 @@ public partial class Group
     public string GroupName { get; set; }
 
     public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
+
+    public static implicit operator Group(string v)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -14,4 +14,9 @@ public partial class Office
     public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
 
     public virtual ICollection<TypeOffice> OfficeTypes { get; set; } = new List<TypeOffice>();
+
+    public static implicit operator Office(string v)
+    {
+        throw new NotImplementedException();
+    }
 }

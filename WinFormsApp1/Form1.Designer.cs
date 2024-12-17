@@ -110,6 +110,7 @@
             button11 = new Button();
             button12 = new Button();
             dataGridView1 = new DataGridView();
+            lessonBindingSource = new BindingSource(components);
             dayBindingSource = new BindingSource(components);
             tabControl1 = new TabControl();
             LesssonOrder = new TabPage();
@@ -128,14 +129,12 @@
             LessonTypesID = new DataGridViewTextBoxColumn();
             lessonTypesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lessonTypeBindingSource = new BindingSource(components);
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            Column8 = new DataGridViewTextBoxColumn();
+            lessonIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             TypeOffices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)typeOfficeBindingSource).BeginInit();
@@ -163,6 +162,7 @@
             ((System.ComponentModel.ISupportInitialize)dayBindingSource1).BeginInit();
             Lessons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lessonBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dayBindingSource).BeginInit();
             tabControl1.SuspendLayout();
             LesssonOrder.SuspendLayout();
@@ -183,7 +183,7 @@
             TypeOffices.Location = new Point(4, 34);
             TypeOffices.Name = "TypeOffices";
             TypeOffices.Padding = new Padding(3);
-            TypeOffices.Size = new Size(1409, 664);
+            TypeOffices.Size = new Size(1231, 664);
             TypeOffices.TabIndex = 10;
             TypeOffices.Text = "TypeOffices";
             TypeOffices.UseVisualStyleBackColor = true;
@@ -259,7 +259,7 @@
             Offices.Location = new Point(4, 34);
             Offices.Name = "Offices";
             Offices.Padding = new Padding(3);
-            Offices.Size = new Size(1409, 664);
+            Offices.Size = new Size(1231, 664);
             Offices.TabIndex = 8;
             Offices.Text = "Offices";
             Offices.UseVisualStyleBackColor = true;
@@ -335,7 +335,7 @@
             Groups.Location = new Point(4, 34);
             Groups.Name = "Groups";
             Groups.Padding = new Padding(3);
-            Groups.Size = new Size(1409, 664);
+            Groups.Size = new Size(1231, 664);
             Groups.TabIndex = 7;
             Groups.Text = "Groups";
             Groups.UseVisualStyleBackColor = true;
@@ -411,7 +411,7 @@
             Teachers.Location = new Point(4, 34);
             Teachers.Name = "Teachers";
             Teachers.Padding = new Padding(3);
-            Teachers.Size = new Size(1409, 664);
+            Teachers.Size = new Size(1231, 664);
             Teachers.TabIndex = 6;
             Teachers.Text = "Teachers";
             Teachers.UseVisualStyleBackColor = true;
@@ -512,7 +512,7 @@
             Subjects.Location = new Point(4, 34);
             Subjects.Name = "Subjects";
             Subjects.Padding = new Padding(3);
-            Subjects.Size = new Size(1409, 664);
+            Subjects.Size = new Size(1231, 664);
             Subjects.TabIndex = 4;
             Subjects.Text = "Subjects";
             Subjects.UseVisualStyleBackColor = true;
@@ -636,7 +636,7 @@
             Semesters.Location = new Point(4, 34);
             Semesters.Name = "Semesters";
             Semesters.Padding = new Padding(3);
-            Semesters.Size = new Size(1409, 664);
+            Semesters.Size = new Size(1231, 664);
             Semesters.TabIndex = 3;
             Semesters.Text = "Semesters";
             Semesters.UseVisualStyleBackColor = true;
@@ -713,7 +713,7 @@
             Weeks.Location = new Point(4, 34);
             Weeks.Name = "Weeks";
             Weeks.Padding = new Padding(3);
-            Weeks.Size = new Size(1409, 664);
+            Weeks.Size = new Size(1231, 664);
             Weeks.TabIndex = 2;
             Weeks.Text = "Weeks";
             Weeks.UseVisualStyleBackColor = true;
@@ -797,7 +797,7 @@
             Day.Location = new Point(4, 34);
             Day.Name = "Day";
             Day.Padding = new Padding(3);
-            Day.Size = new Size(1409, 664);
+            Day.Size = new Size(1231, 664);
             Day.TabIndex = 1;
             Day.Text = "Day";
             Day.UseVisualStyleBackColor = true;
@@ -881,14 +881,14 @@
             Lessons.Location = new Point(4, 34);
             Lessons.Name = "Lessons";
             Lessons.Padding = new Padding(3);
-            Lessons.Size = new Size(1409, 664);
+            Lessons.Size = new Size(1231, 664);
             Lessons.TabIndex = 0;
             Lessons.Text = "Lessons";
             Lessons.UseVisualStyleBackColor = true;
             // 
             // button10
             // 
-            button10.Location = new Point(1275, 142);
+            button10.Location = new Point(1112, 149);
             button10.Name = "button10";
             button10.Size = new Size(112, 34);
             button10.TabIndex = 8;
@@ -898,7 +898,7 @@
             // 
             // button11
             // 
-            button11.Location = new Point(1275, 89);
+            button11.Location = new Point(1112, 96);
             button11.Name = "button11";
             button11.Size = new Size(112, 34);
             button11.TabIndex = 7;
@@ -908,7 +908,7 @@
             // 
             // button12
             // 
-            button12.Location = new Point(1275, 36);
+            button12.Location = new Point(1112, 43);
             button12.Name = "button12";
             button12.Size = new Size(112, 34);
             button12.TabIndex = 6;
@@ -918,14 +918,19 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { lessonIDDataGridViewTextBoxColumn, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn5 });
+            dataGridView1.DataSource = lessonBindingSource;
             dataGridView1.Location = new Point(6, 6);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1263, 655);
+            dataGridView1.Size = new Size(1103, 655);
             dataGridView1.TabIndex = 0;
-            dataGridView1.CellPainting += dataGridView1_CellPainting;
+            // 
+            // lessonBindingSource
+            // 
+            lessonBindingSource.DataSource = typeof(Models.Lesson);
             // 
             // dayBindingSource
             // 
@@ -947,7 +952,7 @@
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1417, 702);
+            tabControl1.Size = new Size(1239, 702);
             tabControl1.TabIndex = 2;
             // 
             // LesssonOrder
@@ -958,7 +963,7 @@
             LesssonOrder.Controls.Add(dataGridView6);
             LesssonOrder.Location = new Point(4, 34);
             LesssonOrder.Name = "LesssonOrder";
-            LesssonOrder.Size = new Size(1409, 664);
+            LesssonOrder.Size = new Size(1231, 664);
             LesssonOrder.TabIndex = 11;
             LesssonOrder.Text = "LesssonOrder";
             LesssonOrder.UseVisualStyleBackColor = true;
@@ -1033,7 +1038,7 @@
             LessonTypes.Controls.Add(dataGridView10);
             LessonTypes.Location = new Point(4, 34);
             LessonTypes.Name = "LessonTypes";
-            LessonTypes.Size = new Size(1409, 664);
+            LessonTypes.Size = new Size(1231, 664);
             LessonTypes.TabIndex = 13;
             LessonTypes.Text = "LessonTypes";
             LessonTypes.UseVisualStyleBackColor = true;
@@ -1100,67 +1105,64 @@
             // 
             lessonTypeBindingSource.DataSource = typeof(Models.LessonType);
             // 
-            // Column1
+            // lessonIDDataGridViewTextBoxColumn
             // 
-            Column1.HeaderText = "Column1";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "Column1";
-            Column1.Width = 150;
+            lessonIDDataGridViewTextBoxColumn.DataPropertyName = "LessonID";
+            lessonIDDataGridViewTextBoxColumn.HeaderText = "LessonID";
+            lessonIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            lessonIDDataGridViewTextBoxColumn.Name = "lessonIDDataGridViewTextBoxColumn";
+            lessonIDDataGridViewTextBoxColumn.Width = 150;
             // 
-            // Column2
+            // dataGridViewTextBoxColumn3
             // 
-            Column2.HeaderText = "Column2";
-            Column2.MinimumWidth = 8;
-            Column2.Name = "Column2";
-            Column2.Width = 150;
+            dataGridViewTextBoxColumn3.DataPropertyName = "DayID";
+            dataGridViewTextBoxColumn3.HeaderText = "DayID";
+            dataGridViewTextBoxColumn3.MinimumWidth = 8;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Visible = false;
+            dataGridViewTextBoxColumn3.Width = 150;
             // 
-            // Column3
+            // dataGridViewTextBoxColumn4
             // 
-            Column3.HeaderText = "Column3";
-            Column3.MinimumWidth = 8;
-            Column3.Name = "Column3";
-            Column3.Width = 150;
+            dataGridViewTextBoxColumn4.DataPropertyName = "GroupID";
+            dataGridViewTextBoxColumn4.HeaderText = "GroupID";
+            dataGridViewTextBoxColumn4.MinimumWidth = 8;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Visible = false;
+            dataGridViewTextBoxColumn4.Width = 150;
             // 
-            // Column4
+            // dataGridViewTextBoxColumn7
             // 
-            Column4.HeaderText = "Column4";
-            Column4.MinimumWidth = 8;
-            Column4.Name = "Column4";
-            Column4.Width = 150;
+            dataGridViewTextBoxColumn7.DataPropertyName = "TeacherID";
+            dataGridViewTextBoxColumn7.HeaderText = "TeacherID";
+            dataGridViewTextBoxColumn7.MinimumWidth = 8;
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.Visible = false;
+            dataGridViewTextBoxColumn7.Width = 150;
             // 
-            // Column5
+            // dataGridViewTextBoxColumn6
             // 
-            Column5.HeaderText = "Column5";
-            Column5.MinimumWidth = 8;
-            Column5.Name = "Column5";
-            Column5.Width = 150;
+            dataGridViewTextBoxColumn6.DataPropertyName = "SubjectID";
+            dataGridViewTextBoxColumn6.HeaderText = "SubjectID";
+            dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.Visible = false;
+            dataGridViewTextBoxColumn6.Width = 150;
             // 
-            // Column6
+            // dataGridViewTextBoxColumn5
             // 
-            Column6.HeaderText = "Column6";
-            Column6.MinimumWidth = 8;
-            Column6.Name = "Column6";
-            Column6.Width = 150;
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Column7";
-            Column7.MinimumWidth = 8;
-            Column7.Name = "Column7";
-            Column7.Width = 150;
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "Column8";
-            Column8.MinimumWidth = 8;
-            Column8.Name = "Column8";
-            Column8.Width = 150;
+            dataGridViewTextBoxColumn5.DataPropertyName = "OfficeID";
+            dataGridViewTextBoxColumn5.HeaderText = "OfficeID";
+            dataGridViewTextBoxColumn5.MinimumWidth = 8;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.Visible = false;
+            dataGridViewTextBoxColumn5.Width = 150;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1441, 728);
+            ClientSize = new Size(1252, 728);
             Controls.Add(tabControl1);
             Name = "Form1";
             Text = "Form1";
@@ -1191,6 +1193,7 @@
             ((System.ComponentModel.ISupportInitialize)dayBindingSource1).EndInit();
             Lessons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lessonBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dayBindingSource).EndInit();
             tabControl1.ResumeLayout(false);
             LesssonOrder.ResumeLayout(false);
@@ -1326,13 +1329,12 @@
         private DataGridViewTextBoxColumn lesssonOrder1DataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn LessonTypesID;
         private DataGridViewTextBoxColumn lessonTypesDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column8;
+        private BindingSource lessonBindingSource;
+        private DataGridViewTextBoxColumn lessonIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

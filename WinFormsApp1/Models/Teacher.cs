@@ -18,4 +18,9 @@ public partial class Teacher
     public bool IsAvailable { get; set; }
 
     public virtual ICollection<Lesson> Lessons { get; set; } = new List<Lesson>();
+
+    public static implicit operator Teacher(string v)
+    {
+        throw new NotImplementedException();
+    }
 }

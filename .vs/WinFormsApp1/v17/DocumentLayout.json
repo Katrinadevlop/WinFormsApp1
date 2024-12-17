@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|c:\\users\\katya\\source\\repos\\winformsapp1\\winformsapp1\\lessoninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\lessoninfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|c:\\users\\katya\\source\\repos\\winformsapp1\\winformsapp1\\models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|C:\\Users\\katya\\source\\repos\\WinFormsApp1\\winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
@@ -18,8 +26,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Form1.cs",
+              "ToolTip": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Form1.cs*",
+              "RelativeToolTip": "WinFormsApp1\\Form1.cs*",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAcwIkAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T06:25:17.11Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -34,28 +56,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
-              "RelativeDocumentMoniker": "WinFormsApp1\\Form1.cs",
-              "ToolTip": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
-              "RelativeToolTip": "WinFormsApp1\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Models\\Lesson.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\Models\\Lesson.cs",
+              "ToolTip": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Models\\Lesson.cs",
+              "RelativeToolTip": "WinFormsApp1\\Models\\Lesson.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T06:25:17.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T14:11:12.479Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "LessonInfo.cs",
+              "DocumentMoniker": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\LessonInfo.cs",
+              "RelativeDocumentMoniker": "WinFormsApp1\\LessonInfo.cs",
+              "ToolTip": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\LessonInfo.cs",
+              "RelativeToolTip": "WinFormsApp1\\LessonInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T14:01:09.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
               "DocumentMoniker": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Form1.cs",
               "ToolTip": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
               "RelativeToolTip": "WinFormsApp1\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-13T11:32:57.002Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]"
+              "WhenOpened": "2024-12-13T11:32:57.002Z"
             }
           ]
         },
