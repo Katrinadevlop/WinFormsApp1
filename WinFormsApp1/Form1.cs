@@ -33,8 +33,8 @@ namespace WinFormsApp1
         {
             InitializeComponent();
             var connection = new DbContextOptionsBuilder<sql8751184Context>();
-            connection.UseMySql("Server=sql8.freesqldatabase.com;Database=sql8751184;User=sql8751184;Password=KFLf9dkgar;",
-                new MySqlServerVersion(new Version(8, 0, 32)));
+            connection.UseMySql("Server=localhost;Database=sql8751184;User=root;Password=10211021Katya;",
+            new MySqlServerVersion(new Version(8, 0, 32)));
             _repositorySemester = new DbRepository<Semester>(connection.Options);
             _repositoryWeek = new DbRepository<Week>(connection.Options);
             _repositoryDay = new DbRepository<Day>(connection.Options);
@@ -52,12 +52,13 @@ namespace WinFormsApp1
             LoadData();
         }
 
+        private Dictionary<int, List<ComboBox>> comboBoxDictionary = new Dictionary<int, List<ComboBox>>();
+
         private void ConfigureDataGridView()
         {
             dataGridView1.AutoGenerateColumns = false;
 
-            // Колонка для кабинета
-            var officeColumn = new DataGridViewTextBoxColumn
+            /*var officeColumn = new DataGridViewTextBoxColumn
             {
                 Name = "OfficeName",
                 HeaderText = "Кабинет",
@@ -65,37 +66,140 @@ namespace WinFormsApp1
                 ReadOnly = true
             };
 
-            // Колонка для комбобокса с группами, преподавателями и предметами
-            var comboBoxColumn = new DataGridViewComboBoxColumn
+            var customColumn = new DataGridViewTextBoxColumn
             {
-                Name = "GroupTeacherSubject",
-                HeaderText = "Группа, Преподаватель, Предмет",
-                DisplayMember = "DisplayName", // свойство для отображения
-                ValueMember = "Value", // значение, которое будет использоваться
-                DataPropertyName = "GroupTeacherSubject", // имя свойства для привязки
+                Name = "CustomColumn",
+                HeaderText = "1 пара",
+                ReadOnly = false
             };
 
-            // Заполняем комбобоксы для столбца с группами, преподавателями и предметами
-            var comboData = _repositoryGroup.GetAll().Join(_repositoryTeacher.GetAll(),
-                group => group.GroupID,
-                teacher => teacher.TeacherID,
-                (group, teacher) => new
+            var customColumn1 = new DataGridViewTextBoxColumn
+            {
+                Name = "CustomColumn1",
+                HeaderText = "2 пара",
+                ReadOnly = false
+            };
+
+            var customColumn2 = new DataGridViewTextBoxColumn
+            {
+                Name = "CustomColumn2",
+                HeaderText = "3 пара",
+                ReadOnly = false
+            };
+
+            var customColumn3 = new DataGridViewTextBoxColumn
+            {
+                Name = "CustomColumn3",
+                HeaderText = "4 пара",
+                ReadOnly = false
+            };
+
+            var customColumn4 = new DataGridViewTextBoxColumn
+            {
+                Name = "CustomColumn4",
+                HeaderText = "5 пара",
+                ReadOnly = false
+            };
+
+            var customColumn5 = new DataGridViewTextBoxColumn
+            {
+                Name = "CustomColumn5",
+                HeaderText = "6 пара",
+                ReadOnly = false
+            };
+
+            var customColumn6 = new DataGridViewTextBoxColumn
+            {
+                Name = "CustomColumn6",
+                HeaderText = "7 пара",
+                ReadOnly = false
+            };*/
+
+            //dataGridView1.Columns.AddRange(officeColumn, customColumn, customColumn1, customColumn2, customColumn3, customColumn4, customColumn5, customColumn6);
+
+            dataGridView1.EditingControlShowing += (s, e) =>
+            {
+                int columnIndex = dataGridView1.CurrentCell.ColumnIndex;
+
+                if (!comboBoxDictionary.ContainsKey(columnIndex))
                 {
-                    DisplayName = $"{group.GroupName} - {teacher.LastName} ({teacher.TeacherID})",
-                    Value = group.GroupID // или другое значение, в зависимости от ваших требований
-                }).ToList();
+                    comboBoxDictionary[columnIndex] = new List<ComboBox>();
 
-            comboBoxColumn.DataSource = comboData;
+                    int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                    var cellRect = dataGridView1.GetCellDisplayRectangle(columnIndex, rowIndex, true);
 
-            // Добавляем столбцы в DataGridView
-            dataGridView1.Columns.AddRange(officeColumn, comboBoxColumn);
+                    var groupComboBox = new ComboBox
+                    {
+                        DataSource = _repositoryGroup.GetAll(),
+                        DisplayMember = "GroupName",
+                        ValueMember = "GroupID",
+                        DropDownStyle = ComboBoxStyle.DropDownList,
+                        Left = cellRect.Left,
+                        Top = cellRect.Top,
+                        Width = cellRect.Width,
+                        Height = cellRect.Height / 3
+                    };
+                    dataGridView1.Controls.Add(groupComboBox);
+                    comboBoxDictionary[columnIndex].Add(groupComboBox);
+
+                    var teacherComboBox = new ComboBox
+                    {
+                        DataSource = _repositoryTeacher.GetAll(),
+                        DisplayMember = "LastName",
+                        ValueMember = "TeacherID",
+                        DropDownStyle = ComboBoxStyle.DropDownList,
+                        Left = cellRect.Left,
+                        Top = groupComboBox.Bottom,
+                        Width = cellRect.Width,
+                        Height = cellRect.Height / 3
+                    };
+                    dataGridView1.Controls.Add(teacherComboBox);
+                    comboBoxDictionary[columnIndex].Add(teacherComboBox);
+
+                    var subjectComboBox = new ComboBox
+                    {
+                        DataSource = _repositorySubject.GetAll(),
+                        DisplayMember = "SubjectName",
+                        ValueMember = "SubjectID",
+                        DropDownStyle = ComboBoxStyle.DropDownList,
+                        Left = cellRect.Left,
+                        Top = teacherComboBox.Bottom,
+                        Width = cellRect.Width,
+                        Height = cellRect.Height / 3
+                    };
+                    dataGridView1.Controls.Add(subjectComboBox);
+                    comboBoxDictionary[columnIndex].Add(subjectComboBox);
+
+                    groupComboBox.SelectedIndexChanged += (sender, args) =>
+                    {
+                        dataGridView1.CurrentCell.Value = groupComboBox.Text;
+                    };
+                    teacherComboBox.SelectedIndexChanged += (sender, args) =>
+                    {
+                        dataGridView1.CurrentCell.Value += $" | {teacherComboBox.Text}";
+                    };
+                    subjectComboBox.SelectedIndexChanged += (sender, args) =>
+                    {
+                        dataGridView1.CurrentCell.Value += $" | {subjectComboBox.Text}";
+                    };
+                }
+            };
         }
-
 
         private void LoadData()
         {
             try
             {
+                dataGridView4.DataSource = new BindingList<Semester>(_repositorySemester.GetAll());
+                dataGridView3.DataSource = new BindingList<Week>(_repositoryWeek.GetAll());
+                dataGridView2.DataSource = new BindingList<Day>(_repositoryDay.GetAll());
+                dataGridView5.DataSource = new BindingList<Subject>(_repositorySubject.GetAll());
+                dataGridView7.DataSource = new BindingList<Teacher>(_repositoryTeacher.GetAll());
+                dataGridView8.DataSource = new BindingList<Group>(_repositoryGroup.GetAll());
+                dataGridView9.DataSource = new BindingList<Office>(_repositoryOffice.GetAll());
+                dataGridView11.DataSource = new BindingList<TypeOffice>(_repositoryTypeOffice.GetAll());
+                dataGridView6.DataSource = new BindingList<LesssonOrder>(_repositoryLesssonOrder.GetAll());
+                dataGridView10.DataSource = new BindingList<LessonType>(_repositoryLessonType.GetAll());
                 var semesterData = _repositorySemester.GetAll();
                 var weekData = _repositoryWeek.GetAll();
                 var dayData = _repositoryDay.GetAll();
@@ -108,18 +212,18 @@ namespace WinFormsApp1
                 var lessonTypeData = _repositoryLessonType.GetAll();
                 var lessonData = _repositoryLesson.GetAll();
                 var lessonInfo = (from Lesson in lessonData
-                                    join Office in officeData on Lesson.OfficeID equals Office.OfficeID
-                                    join Group in groupData on Lesson.GroupID equals Group.GroupID
-                                    join Subject in subjectData on Lesson.SubjectID equals Subject.SubjectID
-                                    join Teacher in teacherData on Lesson.TeacherID equals Teacher.TeacherID
-                                    select new LessonInfo
-                                    {
-                                        LessonID = Lesson.LessonID,
-                                        GroupName = Group.GroupName,
-                                        TeacherName = Teacher.LastName,
-                                        OfficeName = Office.OfficeID.ToString(),
-                                        SubjectName = Subject.SubjectName,
-                                    }).ToList();
+                                  join Office in officeData on Lesson.OfficeID equals Office.OfficeID
+                                  join Group in groupData on Lesson.GroupID equals Group.GroupID
+                                  join Subject in subjectData on Lesson.SubjectID equals Subject.SubjectID
+                                  join Teacher in teacherData on Lesson.TeacherID equals Teacher.TeacherID
+                                  select new LessonInfo
+                                  {
+                                      LessonID = Lesson.LessonID,
+                                      GroupName = Group.GroupName,
+                                      TeacherName = Teacher.LastName,
+                                      OfficeName = Office.OfficeID.ToString(),
+                                      SubjectName = Subject.SubjectName,
+                                  }).ToList();
 
                 dataGridView1.DataSource = new BindingList<LessonInfo>(lessonInfo);
             }
@@ -131,7 +235,7 @@ namespace WinFormsApp1
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 0) 
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
                 if (e.RowIndex % 3 == 0)
                 {
@@ -146,7 +250,7 @@ namespace WinFormsApp1
 
                     if (e.RowIndex % 3 == 0)
                     {
-                        string groupText = 1.ToString(); 
+                        string groupText = 1.ToString();
                         TextRenderer.DrawText(e.Graphics, groupText, e.CellStyle.Font, rect, e.CellStyle.ForeColor);
                     }
 
@@ -154,7 +258,7 @@ namespace WinFormsApp1
                 }
                 else
                 {
-                    e.Handled = true; 
+                    e.Handled = true;
                 }
             }
         }
@@ -959,6 +1063,21 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Тип пары не удален " + ex);
             }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
