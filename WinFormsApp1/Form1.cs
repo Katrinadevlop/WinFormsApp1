@@ -9,6 +9,7 @@ using WinFormsApp1.Models;
 using Day = WinFormsApp1.Models.Day;
 using CsvHelper;
 using System.Globalization;
+using QRCoder;
 
 namespace WinFormsApp1
 {
@@ -169,7 +170,7 @@ namespace WinFormsApp1
             }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        public void btnEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -198,7 +199,7 @@ namespace WinFormsApp1
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        public void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
@@ -226,7 +227,7 @@ namespace WinFormsApp1
         }
 
         //Изменение недели
-        private void button5_Click(object sender, EventArgs e)
+        public void button5_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1069,6 +1070,27 @@ namespace WinFormsApp1
                 {
                     e.Value = e.Value.ToString();
                 }
+            }
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = true;
+            string qrText = "Привет";
+
+            if (!string.IsNullOrEmpty(qrText))
+            {
+                QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+                QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
+
+                QRCode qRCode = new QRCode(qRCodeData);
+                Bitmap bitmap = qRCode.GetGraphic(10);
+
+                pictureBox1.Image = bitmap; 
+            }
+            else
+            {
+                MessageBox.Show("Ошибка!");
             }
         }
     }

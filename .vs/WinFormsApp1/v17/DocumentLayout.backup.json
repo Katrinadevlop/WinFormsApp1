@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9330113B-5B48-47D5-AA7F-DE3ED8623020}|Test\\Test.csproj|c:\\users\\katya\\source\\repos\\winformsapp1\\test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9330113B-5B48-47D5-AA7F-DE3ED8623020}|Test\\Test.csproj|solutionrelative:test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|C:\\Users\\katya\\source\\repos\\WinFormsApp1\\winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|c:\\users\\katya\\source\\repos\\winformsapp1\\winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|C:\\Users\\katya\\source\\repos\\WinFormsApp1\\winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{668304EC-286A-4F65-968B-28D4549AEBBF}|WinFormsApp1\\WinFormsApp1.csproj|solutionrelative:winformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,23 +33,6 @@
               "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UnitTest1.cs",
-              "DocumentMoniker": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\Test\\UnitTest1.cs",
-              "RelativeDocumentMoniker": "Test\\UnitTest1.cs",
-              "ToolTip": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\Test\\UnitTest1.cs*",
-              "RelativeToolTip": "Test\\UnitTest1.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T19:25:08.509Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Form1.cs",
@@ -61,14 +40,14 @@
               "RelativeDocumentMoniker": "WinFormsApp1\\Form1.cs",
               "ToolTip": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
               "RelativeToolTip": "WinFormsApp1\\Form1.cs",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAAAJIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAACMEAAAAAAAAAAAuwEAEAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T06:25:17.11Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
               "DocumentMoniker": "C:\\Users\\katya\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsApp1\\Form1.cs",

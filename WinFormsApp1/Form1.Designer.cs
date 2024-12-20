@@ -106,6 +106,8 @@
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dayBindingSource1 = new BindingSource(components);
             Lessons = new TabPage();
+            pictureBox1 = new PictureBox();
+            button35 = new Button();
             button34 = new Button();
             button10 = new Button();
             button11 = new Button();
@@ -162,6 +164,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dayBindingSource1).BeginInit();
             Lessons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)lessonBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dayBindingSource).BeginInit();
@@ -875,6 +878,8 @@
             // 
             // Lessons
             // 
+            Lessons.Controls.Add(pictureBox1);
+            Lessons.Controls.Add(button35);
             Lessons.Controls.Add(button34);
             Lessons.Controls.Add(button10);
             Lessons.Controls.Add(button11);
@@ -887,6 +892,25 @@
             Lessons.TabIndex = 0;
             Lessons.Text = "Lessons";
             Lessons.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(484, 127);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(334, 339);
+            pictureBox1.TabIndex = 11;
+            pictureBox1.TabStop = false;
+            pictureBox1.Visible = false;
+            // 
+            // button35
+            // 
+            button35.Location = new Point(1112, 278);
+            button35.Name = "button35";
+            button35.Size = new Size(112, 60);
+            button35.TabIndex = 10;
+            button35.Text = "Показать QR-код";
+            button35.UseVisualStyleBackColor = true;
+            button35.Click += button35_Click;
             // 
             // button34
             // 
@@ -1205,6 +1229,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dayBindingSource1).EndInit();
             Lessons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)lessonBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dayBindingSource).EndInit();
@@ -1350,5 +1375,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Button button34;
+        private Button button35;
+        private PictureBox pictureBox1;
     }
 }
