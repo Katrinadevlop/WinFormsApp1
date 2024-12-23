@@ -1075,22 +1075,17 @@ namespace WinFormsApp1
 
         private void button35_Click(object sender, EventArgs e)
         {
+            string token = "simple-token-123"; 
+
             pictureBox1.Visible = true;
-            string qrText = "Привет";
-
-            if (!string.IsNullOrEmpty(qrText))
+            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
             {
-                QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
-                QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
-
-                QRCode qRCode = new QRCode(qRCodeData);
-                Bitmap bitmap = qRCode.GetGraphic(10);
-
-                pictureBox1.Image = bitmap; 
-            }
-            else
-            {
-                MessageBox.Show("Ошибка!");
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(token, QRCodeGenerator.ECCLevel.Q);
+                using (QRCode qrCode = new QRCode(qrCodeData))
+                {
+                    Bitmap qrCodeImage = qrCode.GetGraphic(10);
+                    pictureBox1.Image = qrCodeImage; 
+                }
             }
         }
     }
